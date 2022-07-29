@@ -14,11 +14,11 @@ const int relay = 7;
 bool resetMillisCheck = true;
 
 unsigned int time = 0;
-unsigned int timeToCutWater = 20000;
+unsigned long timeToCutWater = 7200000L; // 2 horas
+unsigned long timeToWaterPump = 40000L; // 40 segundos
 
 void (*resetSoftware)(void) = 0;
 
-const int timeToWaterPump = 10000;
 
 // YF-S201
 const float factorK = 7.5;
@@ -67,12 +67,7 @@ void loop()
   Serial.print("FrecuenciaPulsos: ");
   Serial.println(frequency, 0);
 
-  if (frequency > 0)
-  {
-    // La bomba permanece activada
-    digitalWrite(relay, LOW);
-  }
-  else
+  if (frequency = 0)
   {
     // La bomba se desactiva
     digitalWrite(relay, HIGH);
